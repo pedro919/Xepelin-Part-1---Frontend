@@ -28,8 +28,10 @@ const loggedInHandler = async (username, password) => {
         'Content-Type': 'application/json',
       },
     }).catch((error) => {
-    if (error.response.status === 401)
-      showError.value = true
+    if (error.response.status === 401) {
+      showErrorFromBackend.value = true
+      loading.value = false
+    }
   })
 
   if (rawResponse !== undefined) {
@@ -55,7 +57,7 @@ const changedRateHandler = async (event, idOp, rate, email) => {
 
 <template>
   <div>
-    <section v-if="!logged">
+    <section v-if="!logged & !loading">
       <LogIn
         :show-error-from-backend="showErrorFromBackend"
         @loggedIn="loggedInHandler"
