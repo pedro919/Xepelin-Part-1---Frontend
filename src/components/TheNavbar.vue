@@ -1,7 +1,9 @@
 <script setup>
-import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
-import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline/index.js'
+import { Disclosure, DisclosureButton } from '@headlessui/vue'
+import { MenuIcon, XIcon } from '@heroicons/vue/outline/index.js'
 import { LogoutIcon } from '@heroicons/vue/solid/index.js'
+
+const emit = defineEmits(['loggedOut'])
 </script>
 
 <template>
@@ -23,7 +25,7 @@ import { LogoutIcon } from '@heroicons/vue/solid/index.js'
           </div>
           <div class="flex items-center">
             <div class="flex-shrink-0">
-              <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500" @click="logOut">
+              <button type="button" class="relative inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-indigo-500" @click="$emit('loggedOut')">
                 <LogoutIcon class="-ml-1 mr-2 h-5 w-5" aria-hidden="true" />
                 <span>Cerrar sesión</span>
               </button>
