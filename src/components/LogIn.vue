@@ -1,6 +1,4 @@
 <script setup>
-import axios, { AxiosError } from 'axios'
-
 defineProps({
   showErrorFromBackend: { type: Boolean, required: true },
 })
