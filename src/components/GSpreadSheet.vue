@@ -5,7 +5,7 @@ defineProps({
   ratesList: { type: Array, required: true },
 })
 
-const emit = defineEmits(['changedRate'])
+const emit = defineEmits(['changedRow'])
 </script>
 
 <template>
@@ -44,10 +44,10 @@ const emit = defineEmits(['changedRate'])
                     {{ row.idOp }}
                   </td>
                   <td class="whitespace-nowrap px-3 text-sm text-gray-500 text-center h-full">
-                    <input v-model="row.rate" step=".01" type="number" class="text-gray-900 text-center border-gray-900 border rounded-md w-full h-10" placeholder="Tasa" @change="$emit('changedRate', $event, row.idOp, row.rate, row.email)">
+                    <input v-model="row.rate" step=".01" type="number" class="text-gray-900 text-center border-gray-900 border rounded-md w-full h-10" placeholder="Tasa" @change="$emit('changedRow', $event, row.idOp, row.rate, row.email)">
                   </td>
-                  <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500 text-center">
-                    {{ row.email }}
+                  <td class="whitespace-nowrap px-3 text-sm text-gray-500 text-center h-full">
+                    <input v-model="row.email" type="email" class="text-gray-900 text-center border-gray-900 border rounded-md w-full h-10" placeholder="Email" @change="$emit('changedRow', $event, row.idOp, row.rate, row.email)">
                   </td>
                 </tr>
               </tbody>

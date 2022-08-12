@@ -43,7 +43,7 @@ const loggedInHandler = async (username, password) => {
     }
   }
 }
-const changedRateHandler = async (event, idOp, rate, email) => {
+const changedRowHandler = async (event, idOp, rate, email) => {
   const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/update_gspread_rate`,
     JSON.stringify({ idOp, tasa: rate, email }),
     {
@@ -74,7 +74,7 @@ const changedRateHandler = async (event, idOp, rate, email) => {
       />
       <GSpreadSheet
         :rates-list="ratesList"
-        @changedRate="changedRateHandler"
+        @changedRow="changedRowHandler"
       />
     </section>
   </div>
