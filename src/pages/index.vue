@@ -43,8 +43,20 @@ const loggedInHandler = async (username, password) => {
     }
   }
 }
-const changedRowHandler = async (event, idOp, rate, email) => {
+
+const changedRateHandler = async (event, idOp, rate, email) => {
   const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/update_gspread_rate`,
+    JSON.stringify({ idOp, tasa: rate, email }),
+    {
+      headers: {
+        'Authorization': `Bearer ${bearerToken.value}`,
+        'Content-Type': 'application/json',
+      },
+    })
+}
+
+const changedEmailHandler = async (event, idOp, rate, email) => {
+  const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/update_gspread_email`,
     JSON.stringify({ idOp, tasa: rate, email }),
     {
       headers: {
@@ -74,7 +86,8 @@ const changedRowHandler = async (event, idOp, rate, email) => {
       />
       <GSpreadSheet
         :rates-list="ratesList"
-        @changedRow="changedRowHandler"
+        @changedRate="changedRateHandler"
+        @changedEmail="changedEmailHandler"
       />
     </section>
   </div>
